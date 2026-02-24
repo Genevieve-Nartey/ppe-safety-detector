@@ -1,0 +1,42 @@
+# ============================================================
+# Construction Site Safety - YOLOv8 Dataset Config
+# ============================================================
+# Download dataset from:
+# https://universe.roboflow.com/roboflow-universe-projects/construction-site-safety
+#
+# Expected folder structure:
+# data/
+#   train/
+#     images/   ← .jpg / .png files
+#     labels/   ← .txt YOLO-format annotations
+#   val/
+#     images/
+#     labels/
+#   test/
+#     images/
+#     labels/
+
+path: ./data              # root dataset directory
+train: train/images
+val:   val/images
+test:  test/images
+
+# Number of classes
+nc: 10
+
+# Class names
+# "no-*" classes = violation detected (missing PPE)
+names:
+  0: hardhat
+  1: no-hardhat           # ⚠️ VIOLATION
+  2: safety-vest
+  3: no-safety-vest       # ⚠️ VIOLATION
+  4: gloves
+  5: no-gloves            # ⚠️ VIOLATION
+  6: safety-boots
+  7: no-safety-boots      # ⚠️ VIOLATION
+  8: person
+  9: machinery
+
+# Violation class IDs (used in app.py / demo.py)
+violation_classes: [1, 3, 5, 7]
